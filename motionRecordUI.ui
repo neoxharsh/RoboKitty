@@ -877,7 +877,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_18">
+     <layout class="QHBoxLayout" name="manualSlidersLayoutMR">
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_27">
         <item>
@@ -932,7 +932,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="frontLeftFemurSliderMR">
+         <widget class="CustomQSlider" name="frontLeftFemurSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -965,7 +965,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="frontLeftLegSliderMR">
+         <widget class="CustomQSlider" name="frontLeftLegSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1004,7 +1004,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="frontRightShoulderSliderMR">
+         <widget class="CustomQSlider" name="frontRightShoulderSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1037,7 +1037,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="frontRightFemurSliderMR">
+         <widget class="CustomQSlider" name="frontRightFemurSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1070,7 +1070,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="frontRightLegSliderMR">
+         <widget class="CustomQSlider" name="frontRightLegSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1109,7 +1109,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearLeftShoulderSliderMR">
+         <widget class="CustomQSlider" name="rearLeftShoulderSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1142,7 +1142,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearLeftFemurSliderMR">
+         <widget class="CustomQSlider" name="rearLeftFemurSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1168,7 +1168,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearLeftLegSliderMR">
+         <widget class="CustomQSlider" name="rearLeftLegSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1207,7 +1207,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearRightShoulderSliderMR">
+         <widget class="CustomQSlider" name="rearRightShoulderSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1240,7 +1240,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearRightFemurSliderMR">
+         <widget class="CustomQSlider" name="rearRightFemurSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1273,7 +1273,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="rearRightLegSliderMR">
+         <widget class="CustomQSlider" name="rearRightLegSliderMR">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1298,9 +1298,9 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="2,1,4,0,1,1,0,0,1,0,0">
+     <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="0,1,4,0,1,1,0,0,1,0,0">
       <item>
-       <widget class="QListView" name="motionsListViewMR"/>
+       <widget class="QListWidget" name="motionsListViewMR"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_24">
@@ -1308,6 +1308,9 @@
          <widget class="QPushButton" name="playMotionButtonMR">
           <property name="text">
            <string>Play Motion</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1335,6 +1338,20 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="loadMotionButtonMR">
+          <property name="text">
+           <string>Load Motion</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="appendMotionButton">
+          <property name="text">
+           <string>Append Motion</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="Line" name="line_6">
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
@@ -1351,13 +1368,6 @@
          <widget class="QPushButton" name="newMotionButtonMR">
           <property name="text">
            <string>New Motion</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="loadMotionButtonMR">
-          <property name="text">
-           <string>Load Motion</string>
           </property>
          </widget>
         </item>
@@ -1409,7 +1419,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="nextButtonMR">
+       <widget class="QPushButton" name="addNewRowButtonMR">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -1417,7 +1427,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Next</string>
+         <string>Add New Row</string>
         </property>
        </widget>
       </item>
@@ -1486,6 +1496,9 @@
           </item>
           <item>
            <widget class="QDoubleSpinBox" name="secondsSpinMR">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="decimals">
              <number>3</number>
             </property>
@@ -1534,6 +1547,9 @@
         </item>
         <item>
          <widget class="QSlider" name="torqueSliderMR">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>

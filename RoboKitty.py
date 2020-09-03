@@ -47,7 +47,6 @@ class MainWindow(QTabWidget,Ui_MainWindow):
         self.setCurrentIndex(1)
         self.init()
 
-
     def keyPressEvent(self, a0: QKeyEvent) -> None:
         pass
 
@@ -76,7 +75,7 @@ class MainWindow(QTabWidget,Ui_MainWindow):
         elif index == 2:
             self.setFixedSize(802,324)
         elif index == 3:
-            self.motionRecorderTab.initValues()
+
             self.setFixedSize(1558,619)
             self.motionRecorderTab.motors = [
                 ["Front Left Shoulder", self.FrontLeftShoulder],
@@ -96,6 +95,8 @@ class MainWindow(QTabWidget,Ui_MainWindow):
                 ["Rear Right Leg", self.RearRightLeg],
             ]
             self.motionRecorderTab.motionDataModel.setHeaderLabels([x[0] for x in self.motionRecorderTab.motors] + ["Delay (milliseconds)","Torque"])
+            self.motionRecorderTab.initValues()
+
 
     def init(self):
         self.currentChanged.connect(self.tabChanged)

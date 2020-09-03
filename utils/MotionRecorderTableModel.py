@@ -73,7 +73,9 @@ class MotionRecorderTableModel(QAbstractTableModel):
                     return QBrush(color)
         except:
             pass
-
+    def updateData(self,data):
+        self._data = data
+        self.layoutChanged.emit()
     def setHeaderColor(self,index,color):
         self._colorHeader[index] = color
         self.headerDataChanged.emit(Qt.Horizontal,1,10)

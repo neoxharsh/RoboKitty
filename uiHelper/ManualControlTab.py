@@ -10,7 +10,7 @@ class ManualControlTab:
         self.initTab()
 
     def motorsEnableButtonClicked(self,e):
-        if not self.parent.areMotorsEnabled and self.parent.isRoboKittyConnected:
+        if not self.parent.areMotorsEnabled and self.parent.isRoboKittyConnected and self:
             AX12A.setEnableTorqueGroup(self.parent.ax12aInstances,1)
             self.parent.motorsEnableButtonMC.setText("Disable Motors")
             self.setSlidersRange()
