@@ -50,9 +50,9 @@ class MainWindow(QTabWidget,Ui_MainWindow):
     def keyPressEvent(self, a0: QKeyEvent) -> None:
         pass
 
-    def resizeEvent(self, a0: QResizeEvent) -> None:
-        QTabWidget.resizeEvent(self,a0)
-        print(a0.size())
+    # def resizeEvent(self, a0: QResizeEvent) -> None:
+    #     QTabWidget.resizeEvent(self,a0)
+    #     print(a0.size())
 
     def closeEvent(self, a0: QCloseEvent) -> None:
         pickle.dump(self.config,open('config.pkl','wb'))
@@ -69,14 +69,16 @@ class MainWindow(QTabWidget,Ui_MainWindow):
 
     def tabChanged(self,index):
         if index == 0:
-            self.setFixedSize(890,300)
+            pass
+            # self.setFixedSize(890,300)
         elif index == 1:
-            self.setFixedSize(890,400)
+            pass
+            # self.setFixedSize(890,400)
         elif index == 2:
-            self.setFixedSize(802,324)
+            pass
+            # self.setFixedSize(802,324)
         elif index == 3:
-
-            self.setFixedSize(1558,619)
+            # self.setFixedSize(1558,619)
             self.motionRecorderTab.motors = [
                 ["Front Left Shoulder", self.FrontLeftShoulder],
                 ["Front Left Femur", self.FrontLeftFemer],
