@@ -2,8 +2,6 @@ from utils.MotionRecorderTableModel import MotionRecorderTableModel
 from PyQt5.QtCore import QModelIndex,QThread,pyqtSignal
 from PyQt5.Qt import Qt
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QBrush,QColor
-from utils.MotionRecorderData import MotionRecorderData
 from uiHelper.CustomQLabel import CustomQLabel
 import time,pickle,os
 from utils.AX12 import AX12A
@@ -37,6 +35,7 @@ class MotionRecorderTab:
         self.previousColumnIndex = None
         self.currentMotion = None
         self.isPlayingMotion = False
+        self.singleColumnSelectMode = True
         self.init()
 
     def init(self):
@@ -57,10 +56,12 @@ class MotionRecorderTab:
         self.parent.loadMotionButtonMR.clicked.connect(self.loadMotionButtonClicked)
         self.parent.newMotionButtonMR.clicked.connect(self.newMotionButtonClicked)
         self.parent.appendMotionButton.clicked.connect(self.appendMotionButtonClicked)
+        self.parent.singleJointSelectModeRadioButtonMR.toggled.connect(lambda :self.columnSelectMode(self.parent.singleJointSelectModeRadioButtonMR))
+        self.parent.multiJointSelectModeRadioButtonMR.toggled.connect(lambda :self.columnSelectMode(self.parent.multiJointSelectModeRadioButtonMR))
 
-
+        for column in range(self.motionDataModel.columnCount()):
+            self.parent.motionRecordTableMR.setColumnWidth(column,200)
         self.parent.frontLeftShoulderLabelMR.setParentSliderColumn(self,self.parent.frontLeftShoulderSliderMR, 0)
-
 
         self.parent.frontLeftFemurLabelMR.setParentSliderColumn(self,self.parent.frontLeftFemurSliderMR, 1)
 
@@ -211,8 +212,12 @@ class MotionRecorderTab:
             CustomQLabel.disableAll()
         else:
             pass
-            # self.currentRowIndex = self.motionDataModel.rowCount() - 1
-            # self.parent.motionRecordTableMR.selectRow(self.currentRowIndex)
+
+    def columnSelectMode(self,_sender):
+        if _sender == self.parent.singleJointSelectModeRadioButtonMR and self.parent.singleJointSelectModeRadioButtonMR.isChecked():
+            self.singleColumnSelectMode = True
+        if _sender == self.parent.multiJointSelectModeRadioButtonMR and self.parent.multiJointSelectModeRadioButtonMR.isChecked():
+            self.singleColumnSelectMode = False
 
     def columnClicked(self,index):
         if index is not None:
@@ -228,19 +233,29 @@ class MotionRecorderTab:
                 elif index is not 12:
                     for column in range(self.motionDataModel.columnCount()):
                         if column in range(12):
-                            if column == index:
-                                self.motors[column][1].setTorqueLimit(1)
-                                self.motors[column][1].setTorque(False)
-                                self.motors[column][1].setLED(True)
-                                if self.positionGetterThread is not None:
-                                    self.positionGetterThread.motorIndex = column
-                                self.motionDataModel.setHeaderColor(index, self.headerSelectColor)
-                                self.currentColumnIndex = index
+                            if self.singleColumnSelectMode:
+                                if column == index:
+                                    self.motors[column][1].setTorqueLimit(1)
+                                    self.motors[column][1].setTorque(False)
+                                    self.motors[column][1].setLED(True)
+                                    if self.positionGetterThread is not None:
+                                        self.positionGetterThread.motorIndex = column
+                                    self.motionDataModel.setHeaderColor(index, self.headerSelectColor)
+                                    self.currentColumnIndex = index
+                                else:
+                                    self.motors[column][1].setTorqueLimit(1023)
+                                    self.motors[column][1].setTorque(True)
+                                    self.motors[column][1].setLED(False)
+                                    self.motionDataModel.setHeaderColor(column, Qt.black)
                             else:
-                                self.motors[column][1].setTorqueLimit(1023)
-                                self.motors[column][1].setTorque(True)
-                                self.motors[column][1].setLED(False)
-                                self.motionDataModel.setHeaderColor(column, Qt.black)
+                                if column == index:
+                                    self.motors[column][1].setTorqueLimit(1)
+                                    self.motors[column][1].setTorque(False)
+                                    self.motors[column][1].setLED(True)
+                                    if self.positionGetterThread is not None:
+                                        self.positionGetterThread.motorIndex = column
+                                    self.motionDataModel.setHeaderColor(index, self.headerSelectColor)
+                                    self.currentColumnIndex = index
         else:
             if self.parent.isRoboKittyConnected:
                 self.currentColumnIndex = None
@@ -354,7 +369,7 @@ class MotionRecorderTab:
 
     def playRecordingButtonClicked(self,e):
         if self.parent.isRoboKittyConnected and not self.isPlayingMotion:
-            AX12A.setSpeedGroup(self.parent.ax12aInstances,300)
+            AX12A.setSpeedGroup(self.parent.ax12aInstances,1023)
             self.isPlayingMotion = True
             self.parent.enableMotorsButtonMR.setChecked(True)
             self.parent.enableMotorsButtonMR.setEnabled(False)
@@ -379,6 +394,8 @@ class MotionRecorderTab:
             self.parent.editModeButtonMR.setEnabled(False)
         else:
             self.parent.playMotionButtonMR.setText("Play Motion")
+            if self.playMotionThread is not None and self.playMotionThread.running:
+                self.playMotionThread.stop()
 
     def updateMotionData(self,value):
         if self.currentColumnIndex is not None:
@@ -474,8 +491,12 @@ class ServoPositionGetter(QThread):
 
     def run(self) -> None:
         while self.isGettingPosition:
-            _motor = self.parent.motors[self.motorIndex][1]  # type:AX12A
-            self.servoPositionSignal.emit(_motor.getPosition())
+            if self.parent.singleColumnSelectMode:
+                _motor = self.parent.motors[self.motorIndex][1]  # type:AX12A
+                self.servoPositionSignal.emit(_motor.getPosition())
+            else:
+                _motor = self.parent.motors[self.motorIndex][1]  # type:AX12A
+                self.servoPositionSignal.emit(_motor.getPosition())
             time.sleep(1)
 
 class PlayMotionThread(QThread):
