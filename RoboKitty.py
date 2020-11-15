@@ -73,7 +73,7 @@ class MainWindow(QWidget,Ui_MainWindow):
         self.tabWidget.setCurrentIndex(1)
         self.init()
 
-    def keyPressEvent(self, a0: QKeyEvent) -> None:
+    def keyPressEvent(self, a0) -> None:
         pass
 
     def windowBarMove(self,event:QMouseEvent):

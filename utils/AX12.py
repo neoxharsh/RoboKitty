@@ -1,4 +1,4 @@
-from dynamixel_sdk import *
+from utils.dynamixel_sdk import *
 
 
 class AX12A:
