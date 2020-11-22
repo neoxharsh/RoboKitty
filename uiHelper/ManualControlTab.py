@@ -41,21 +41,21 @@ class ManualControlTab:
 
 
 
-        self.parent.rearLeftFemerSliderMC.setMaximum(self.parent.RearLeftFemer.getCCWLimit())
-        self.parent.rearLeftFemerSliderMC.setMinimum(self.parent.RearLeftFemer.getCWLimit())
-        self.parent.rearLeftFemerSliderMC.setValue(self.parent.RearLeftFemer.getPosition())
+        self.parent.rearLeftFemerSliderMC.setMaximum(self.parent.RearLeftFemur.getCCWLimit())
+        self.parent.rearLeftFemerSliderMC.setMinimum(self.parent.RearLeftFemur.getCWLimit())
+        self.parent.rearLeftFemerSliderMC.setValue(self.parent.RearLeftFemur.getPosition())
 
-        self.parent.frontLeftFemerSliderMC.setMaximum(self.parent.FrontLeftFemer.getCCWLimit())
-        self.parent.frontLeftFemerSliderMC.setMinimum(self.parent.FrontLeftFemer.getCWLimit())
-        self.parent.frontLeftFemerSliderMC.setValue(self.parent.FrontLeftFemer.getPosition())
+        self.parent.frontLeftFemerSliderMC.setMaximum(self.parent.FrontLeftFemur.getCCWLimit())
+        self.parent.frontLeftFemerSliderMC.setMinimum(self.parent.FrontLeftFemur.getCWLimit())
+        self.parent.frontLeftFemerSliderMC.setValue(self.parent.FrontLeftFemur.getPosition())
 
-        self.parent.rearRightFemerSliderMC.setMaximum(self.parent.RearRightFemer.getCCWLimit())
-        self.parent.rearRightFemerSliderMC.setMinimum(self.parent.RearRightFemer.getCWLimit())
-        self.parent.rearRightFemerSliderMC.setValue(self.parent.RearRightFemer.getPosition())
+        self.parent.rearRightFemerSliderMC.setMaximum(self.parent.RearRightFemur.getCCWLimit())
+        self.parent.rearRightFemerSliderMC.setMinimum(self.parent.RearRightFemur.getCWLimit())
+        self.parent.rearRightFemerSliderMC.setValue(self.parent.RearRightFemur.getPosition())
 
-        self.parent.frontRightFemerSliderMC.setMaximum(self.parent.FrontRightFemer.getCCWLimit())
-        self.parent.frontRightFemerSliderMC.setMinimum(self.parent.FrontRightFemer.getCWLimit())
-        self.parent.frontRightFemerSliderMC.setValue(self.parent.FrontRightFemer.getPosition())
+        self.parent.frontRightFemerSliderMC.setMaximum(self.parent.FrontRightFemur.getCCWLimit())
+        self.parent.frontRightFemerSliderMC.setMinimum(self.parent.FrontRightFemur.getCWLimit())
+        self.parent.frontRightFemerSliderMC.setValue(self.parent.FrontRightFemur.getPosition())
 
 
         self.parent.rearLeftLegSliderMC.setMaximum(self.parent.RearLeftLeg.getCCWLimit())
@@ -77,25 +77,25 @@ class ManualControlTab:
         self.parent.rearLeftShoulderSliderMC.valueChanged.connect(
             lambda value: self.parent.RearLeftShoulder.setPosition(value))
         self.parent.rearLeftFemerSliderMC.valueChanged.connect(
-            lambda value: self.parent.RearLeftFemer.setPosition(value))
+            lambda value: self.parent.RearLeftFemur.setPosition(value))
         self.parent.rearLeftLegSliderMC.valueChanged.connect(lambda value: self.parent.RearLeftLeg.setPosition(value))
 
         self.parent.rearRightShoulderSliderMC.valueChanged.connect(
             lambda value: self.parent.RearRightShoulder.setPosition(value))
         self.parent.rearRightFemerSliderMC.valueChanged.connect(
-            lambda value: self.parent.RearRightFemer.setPosition(value))
+            lambda value: self.parent.RearRightFemur.setPosition(value))
         self.parent.rearRightLegSliderMC.valueChanged.connect(lambda value: self.parent.RearRightLeg.setPosition(value))
 
         self.parent.frontLeftShoulderSliderMC.valueChanged.connect(
             lambda value: self.parent.FrontLeftShoulder.setPosition(value))
         self.parent.frontLeftFemerSliderMC.valueChanged.connect(
-            lambda value: self.parent.FrontLeftFemer.setPosition(value))
+            lambda value: self.parent.FrontLeftFemur.setPosition(value))
         self.parent.frontLeftLegSliderMC.valueChanged.connect(lambda value: self.parent.FrontLeftLeg.setPosition(value))
 
         self.parent.frontRightShoulderSliderMC.valueChanged.connect(
             lambda value: self.parent.FrontRightShoulder.setPosition(value))
         self.parent.frontRightFemerSliderMC.valueChanged.connect(
-            lambda value: self.parent.FrontRightFemer.setPosition(value))
+            lambda value: self.parent.FrontRightFemur.setPosition(value))
         self.parent.frontRightLegSliderMC.valueChanged.connect(
             lambda value: self.parent.FrontRightLeg.setPosition(value))
 

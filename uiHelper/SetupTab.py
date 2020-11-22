@@ -47,35 +47,35 @@ class SetupTab:
             if AX12A.connected:
                 self.parent.isRoboKittyConnected = True
 
-                self.parent.RearRightShoulder = AX12A(int(self.parent.config.RearRightShoulderID))
-                self.parent.RearRightFemer = AX12A(int(self.parent.config.RearRightFemerID))
-                self.parent.RearRightLeg = AX12A(int(self.parent.config.RearRightLegID))
+                self.parent.RearRightShoulder = AX12A(int(self.parent.config.RearRightShoulderID),"Rear Right Shoulder")
+                self.parent.RearRightFemur = AX12A(int(self.parent.config.RearRightFemerID),"Rear Right Femur")
+                self.parent.RearRightLeg = AX12A(int(self.parent.config.RearRightLegID),"Rear Right Leg")
 
                 self.parent.ax12aInstances.append(self.parent.RearRightShoulder)
-                self.parent.ax12aInstances.append(self.parent.RearRightFemer)
+                self.parent.ax12aInstances.append(self.parent.RearRightFemur)
                 self.parent.ax12aInstances.append(self.parent.RearRightLeg)
 
-                self.parent.RearLeftShoulder = AX12A(int(self.parent.config.RearLeftShoulderID))
-                self.parent.RearLeftFemer = AX12A(int(self.parent.config.RearLeftFemerID))
-                self.parent.RearLeftLeg = AX12A(int(self.parent.config.RearLeftLegID))
+                self.parent.RearLeftShoulder = AX12A(int(self.parent.config.RearLeftShoulderID),"Rear Left Shoulder")
+                self.parent.RearLeftFemur = AX12A(int(self.parent.config.RearLeftFemerID),"Rear Left Femur")
+                self.parent.RearLeftLeg = AX12A(int(self.parent.config.RearLeftLegID),"Rear Left Leg")
 
                 self.parent.ax12aInstances.append(self.parent.RearLeftShoulder)
-                self.parent.ax12aInstances.append(self.parent.RearLeftFemer)
+                self.parent.ax12aInstances.append(self.parent.RearLeftFemur)
                 self.parent.ax12aInstances.append(self.parent.RearLeftLeg)
 
-                self.parent.FrontLeftShoulder = AX12A(int(self.parent.config.FrontLeftShoulderID))
-                self.parent.FrontLeftFemer = AX12A(int(self.parent.config.FrontLeftFemerID))
-                self.parent.FrontLeftLeg = AX12A(int(self.parent.config.FrontLeftLegID))
+                self.parent.FrontLeftShoulder = AX12A(int(self.parent.config.FrontLeftShoulderID),"Front Left Shoulder")
+                self.parent.FrontLeftFemur = AX12A(int(self.parent.config.FrontLeftFemerID),"Front Left Femur")
+                self.parent.FrontLeftLeg = AX12A(int(self.parent.config.FrontLeftLegID),"Front left Leg")
                 self.parent.ax12aInstances.append(self.parent.FrontLeftShoulder)
-                self.parent.ax12aInstances.append(self.parent.FrontLeftFemer)
+                self.parent.ax12aInstances.append(self.parent.FrontLeftFemur)
                 self.parent.ax12aInstances.append(self.parent.FrontLeftLeg)
 
-                self.parent.FrontRightShoulder = AX12A(int(self.parent.config.FrontRightShoulderID))
-                self.parent.FrontRightFemer = AX12A(int(self.parent.config.FrontRightFemerID))
-                self.parent.FrontRightLeg = AX12A(int(self.parent.config.FrontRightLegID))
+                self.parent.FrontRightShoulder = AX12A(int(self.parent.config.FrontRightShoulderID),"Front Right Shoulder")
+                self.parent.FrontRightFemur = AX12A(int(self.parent.config.FrontRightFemerID),"Front Right Femur")
+                self.parent.FrontRightLeg = AX12A(int(self.parent.config.FrontRightLegID),"Front Right Leg")
 
                 self.parent.ax12aInstances.append(self.parent.FrontRightShoulder)
-                self.parent.ax12aInstances.append(self.parent.FrontRightFemer)
+                self.parent.ax12aInstances.append(self.parent.FrontRightFemur)
                 self.parent.ax12aInstances.append(self.parent.FrontRightLeg)
 
             return True

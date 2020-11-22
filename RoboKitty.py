@@ -10,7 +10,13 @@ from uiHelper.CalibrateServoTab import CalibrateServoTab
 from uiHelper.SetupTab import SetupTab
 from uiHelper.ManualControlTab import ManualControlTab
 from uiHelper.MotionRecorderTab import MotionRecorderTab
-from pyqt5_material import apply_stylesheet
+from uiHelper.CenterServoTab import CenterServoTab
+
+try:
+    from pyqt5_material import apply_stylesheet
+except:
+    def apply_stylesheet(a,theme):
+        pass
 
 class MainWindow(QWidget,Ui_MainWindow):
 
@@ -48,19 +54,19 @@ class MainWindow(QWidget,Ui_MainWindow):
         self.areMotorsEnabled = False
 
         self.RearRightShoulder = None # type:AX12A
-        self.RearRightFemer = None # type:AX12A
+        self.RearRightFemur = None # type:AX12A
         self.RearRightLeg = None # type:AX12A
 
         self.RearLeftShoulder = None # type:AX12A
-        self.RearLeftFemer = None # type:AX12A
+        self.RearLeftFemur = None # type:AX12A
         self.RearLeftLeg = None # type:AX12A
 
         self.FrontLeftShoulder = None # type:AX12A
-        self.FrontLeftFemer = None # type:AX12A
+        self.FrontLeftFemur = None # type:AX12A
         self.FrontLeftLeg = None # type:AX12A
 
         self.FrontRightShoulder = None # type:AX12A
-        self.FrontRightFemer = None # type:AX12A
+        self.FrontRightFemur = None # type:AX12A
         self.FrontRightLeg = None # type:AX12A
 
         self.ax12aInstances = []
@@ -106,32 +112,34 @@ class MainWindow(QWidget,Ui_MainWindow):
             pass
             # self.setFixedSize(890,300)
         elif index == 1:
-            pass
+            self.centerServoTab.onTabActivate()
             # self.setFixedSize(890,400)
         elif index == 2:
             pass
             # self.setFixedSize(802,324)
-        elif index == 3:
+        elif index == 4:
             # self.setFixedSize(1558,619)
             self.motionRecorderTab.motors = [
                 ["Front Left Shoulder", self.FrontLeftShoulder],
-                ["Front Left Femur", self.FrontLeftFemer],
+                ["Front Left Femur", self.FrontLeftFemur],
                 ["Front Left Leg", self.FrontLeftLeg],
 
                 ["Front Right Shoulder", self.FrontRightShoulder],
-                ["Front Right Femur", self.FrontRightFemer],
+                ["Front Right Femur", self.FrontRightFemur],
                 ["Front Right Leg", self.FrontRightLeg],
 
                 ["Rear Left Shoulder", self.RearLeftShoulder],
-                ["Rear Left Femur", self.RearLeftFemer],
+                ["Rear Left Femur", self.RearLeftFemur],
                 ["Rear Left Leg", self.RearLeftLeg],
 
                 ["Rear Right Shoulder", self.RearRightShoulder],
-                ["Rear Right Femur", self.RearRightFemer],
+                ["Rear Right Femur", self.RearRightFemur],
                 ["Rear Right Leg", self.RearRightLeg],
             ]
             self.motionRecorderTab.motionDataModel.setHeaderLabels([x[0] for x in self.motionRecorderTab.motors] + ["Delay (milliseconds)","Torque"])
             self.motionRecorderTab.initValues()
+        elif index == 3:
+            pass
 
 
     def init(self):
@@ -140,7 +148,7 @@ class MainWindow(QWidget,Ui_MainWindow):
         self.setupTab = SetupTab(self)
         self.manualControlTab = ManualControlTab(self)
         self.motionRecorderTab = MotionRecorderTab(self)
-
+        self.centerServoTab = CenterServoTab(self)
 
 
 if __name__ == '__main__':

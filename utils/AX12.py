@@ -39,8 +39,9 @@ class AX12A:
 
     groupMaxTorqueSet = GroupSyncWrite(port,port,TORQUE_MAX_ADDR[1],TORQUE_MAX_ADDR[0])
 
-    def __init__(self,id):
+    def __init__(self,id,name):
         self.id = id
+        self.name = name
         if self.__class__.debugEnabled: print("Motor: " + str(self.id) + " Connected")
 
     @classmethod

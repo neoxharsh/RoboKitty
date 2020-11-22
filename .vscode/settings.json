@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/harshtalpada/.conda/envs/RoboKittyEnv/bin/python"
+    "python.pythonPath": "/Users/harshtalpada/.conda/envs/RoboKittyEnv/bin/python",
+    "python.linting.enabled": true
 }

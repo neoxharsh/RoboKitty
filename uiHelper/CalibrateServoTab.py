@@ -36,19 +36,19 @@ class CalibrateServoTab:
         if self.parent.isRoboKittyConnected:
             motors = [
                 [self.parent.FrontLeftShoulder, self.parent.FrontLeftShoulderLESet, self.parent.frontLeftShoulderLabelCS],
-                [self.parent.FrontLeftFemer, self.parent.FrontLeftFemerLESet, self.parent.frontLeftFemerLabelCS],
+                [self.parent.FrontLeftFemur, self.parent.FrontLeftFemerLESet, self.parent.frontLeftFemerLabelCS],
                 [self.parent.FrontLeftLeg, self.parent.FrontLeftLegLESet, self.parent.frontLeftLegLabelCS],
 
                 [self.parent.FrontRightShoulder, self.parent.FrontRightShoulderLESet, self.parent.frontRightShoulderLabelCS],
-                [self.parent.FrontRightFemer, self.parent.FrontRightFemerLESet, self.parent.frontRightFemerLabelCS],
+                [self.parent.FrontRightFemur, self.parent.FrontRightFemerLESet, self.parent.frontRightFemerLabelCS],
                 [self.parent.FrontRightLeg, self.parent.FrontRightLegLESet, self.parent.frontRightLegLabelCS],
 
                 [self.parent.RearLeftShoulder, self.parent.RearLeftShoulderLESet, self.parent.rearLeftShoulderLabelCS],
-                [self.parent.RearLeftFemer, self.parent.RearLeftFemerLESet, self.parent.rearLeftFemerLabelCS],
+                [self.parent.RearLeftFemur, self.parent.RearLeftFemerLESet, self.parent.rearLeftFemerLabelCS],
                 [self.parent.RearLeftLeg, self.parent.RearLeftLegLESet, self.parent.rearLeftLegLabelCS],
 
                 [self.parent.RearRightShoulder, self.parent.RearRightShoulderLESet, self.parent.rearRightShoulderCS],
-                [self.parent.RearRightFemer, self.parent.RearRightFemerLESet, self.parent.rearRightFemerLabelCS],
+                [self.parent.RearRightFemur, self.parent.RearRightFemerLESet, self.parent.rearRightFemerLabelCS],
                 [self.parent.RearRightLeg, self.parent.RearRightLegLESet, self.parent.rearRightLegLabelCS]
             ]
             self.servoCalibrateThread = ServoCalibrateClass(self,motors)
@@ -100,7 +100,7 @@ class ServoCalibrateClass(QThread):
             if not self.running:
                 break
             if not motor[1].text() == "":
-                motor[0] = AX12A(int(motor[1].text()))
+                motor[0] = AX12A(int(motor[1].text()),"")
             self.servoIDSignal.emit(motor[0].id,motor[2])
             cw,ccw = self.parent.servoCalibrate.calibrateServo(motor[0])
             self.servoDataSignal.emit(cw,ccw,motor[2])

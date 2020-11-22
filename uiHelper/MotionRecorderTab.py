@@ -131,20 +131,20 @@ class MotionRecorderTab:
             self.parent.frontRightShoulderSliderMR.setMinimum(self.parent.FrontRightShoulder.getCWLimit())
             self.parent.frontRightShoulderSliderMR.setEnabled(False)
 
-            self.parent.rearLeftFemurSliderMR.setMaximum(self.parent.RearLeftFemer.getCCWLimit())
-            self.parent.rearLeftFemurSliderMR.setMinimum(self.parent.RearLeftFemer.getCWLimit())
+            self.parent.rearLeftFemurSliderMR.setMaximum(self.parent.RearLeftFemur.getCCWLimit())
+            self.parent.rearLeftFemurSliderMR.setMinimum(self.parent.RearLeftFemur.getCWLimit())
             self.parent.rearLeftFemurSliderMR.setEnabled(False)
 
-            self.parent.frontLeftFemurSliderMR.setMaximum(self.parent.FrontLeftFemer.getCCWLimit())
-            self.parent.frontLeftFemurSliderMR.setMinimum(self.parent.FrontLeftFemer.getCWLimit())
+            self.parent.frontLeftFemurSliderMR.setMaximum(self.parent.FrontLeftFemur.getCCWLimit())
+            self.parent.frontLeftFemurSliderMR.setMinimum(self.parent.FrontLeftFemur.getCWLimit())
             self.parent.frontLeftFemurSliderMR.setEnabled(False)
 
-            self.parent.rearRightFemurSliderMR.setMaximum(self.parent.RearRightFemer.getCCWLimit())
-            self.parent.rearRightFemurSliderMR.setMinimum(self.parent.RearRightFemer.getCWLimit())
+            self.parent.rearRightFemurSliderMR.setMaximum(self.parent.RearRightFemur.getCCWLimit())
+            self.parent.rearRightFemurSliderMR.setMinimum(self.parent.RearRightFemur.getCWLimit())
             self.parent.rearRightFemurSliderMR.setEnabled(False)
 
-            self.parent.frontRightFemurSliderMR.setMaximum(self.parent.FrontRightFemer.getCCWLimit())
-            self.parent.frontRightFemurSliderMR.setMinimum(self.parent.FrontRightFemer.getCWLimit())
+            self.parent.frontRightFemurSliderMR.setMaximum(self.parent.FrontRightFemur.getCCWLimit())
+            self.parent.frontRightFemurSliderMR.setMinimum(self.parent.FrontRightFemur.getCWLimit())
             self.parent.frontRightFemurSliderMR.setEnabled(False)
 
             self.parent.rearLeftLegSliderMR.setMaximum(self.parent.RearLeftLeg.getCCWLimit())

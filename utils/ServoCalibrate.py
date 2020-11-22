@@ -22,9 +22,9 @@ class ServoCalibrate:
         while _cp > _max or _cp < _min:
             _cp = self.parent.FrontRightShoulder.getPosition()
 
-        _cp = self.parent.FrontRightFemer.getPosition()
+        _cp = self.parent.FrontRightFemur.getPosition()
         while _cp > _max or _cp < _min:
-            _cp = self.parent.FrontRightFemer.getPosition()
+            _cp = self.parent.FrontRightFemur.getPosition()
 
         _cp = self.parent.FrontRightLeg.getPosition()
         while _cp > _max or _cp < _min:
@@ -34,9 +34,9 @@ class ServoCalibrate:
         while _cp > _max or _cp < _min:
             _cp = self.parent.RearRightShoulder.getPosition()
 
-        _cp = self.parent.RearRightFemer.getPosition()
+        _cp = self.parent.RearRightFemur.getPosition()
         while _cp > _max or _cp < _min:
-            _cp = self.parent.RearRightFemer.getPosition()
+            _cp = self.parent.RearRightFemur.getPosition()
 
         _cp = self.parent.RearRightLeg.getPosition()
         while _cp > _max or _cp < _min:
@@ -46,9 +46,9 @@ class ServoCalibrate:
         while _cp > _max or _cp < _min:
             _cp = self.parent.FrontLeftShoulder.getPosition()
 
-        _cp = self.parent.FrontLeftFemer.getPosition()
+        _cp = self.parent.FrontLeftFemur.getPosition()
         while _cp > _max or _cp < _min:
-            _cp = self.parent.FrontLeftFemer.getPosition()
+            _cp = self.parent.FrontLeftFemur.getPosition()
 
         _cp = self.parent.FrontLeftLeg.getPosition()
         while _cp > _max or _cp < _min:
@@ -58,9 +58,9 @@ class ServoCalibrate:
         while _cp > _max or _cp < _min:
             _cp = self.parent.RearLeftShoulder.getPosition()
 
-        _cp = self.parent.RearLeftFemer.getPosition()
+        _cp = self.parent.RearLeftFemur.getPosition()
         while _cp > _max or _cp < _min:
-            _cp = self.parent.RearLeftFemer.getPosition()
+            _cp = self.parent.RearLeftFemur.getPosition()
 
         _cp = self.parent.RearLeftLeg.getPosition()
         while _cp > _max or _cp < _min:
